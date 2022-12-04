@@ -1,0 +1,21 @@
+{% load crispy_forms_tags %}
+
+<form method="post" class="my-class" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ form.non_form_errors }}
+    {{ form|crispy }}
+    <br>
+
+    {{ formset.non_form_errors }}
+    {{ formset.management_form}}
+
+    {% for form in formset.forms %}
+        {{ form|crispy }}
+        <br><br>
+    {% endfor %} 
+
+    <button type="submit">submit</button>
+
+
+</form>
